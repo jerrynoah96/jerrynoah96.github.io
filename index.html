@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jeremiah Noah — Solidity & Full-Stack Software Engineer</title>
+<meta name="description" content="Jeremiah Noah — Solidity and Full-Stack Software Engineer. DeFi, payments, and blockchain infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10161f;
+    --surface:#161d28;
+    --line:#2a3441;
+    --text:#e9ecf0;
+    --text-dim:#9aa7b5;
+    --brass:#c2954f;
+    --brass-dim:#8a7048;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brass);color:var(--ink);}
+  a{color:var(--brass);text-decoration:none;border-bottom:1px solid var(--brass-dim);}
+  a:hover{border-bottom-color:var(--brass);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--brass);outline-offset:3px;}
+
+  .wrap{max-width:720px;margin:0 auto;padding:88px 28px 120px;}
+
+  header.hero{margin-bottom:64px;}
+  .name{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(38px,7vw,58px);
+    line-height:1.05;
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .role{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(18px,2.6vw,22px);
+    color:var(--brass);
+    margin:0 0 22px;
+  }
+  .meta{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+    color:var(--text-dim);
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 16px;
+  }
+  .meta a{color:var(--text-dim);border-bottom:1px solid var(--line);}
+  .meta a:hover{color:var(--brass);border-bottom-color:var(--brass);}
+  .meta span.sep{color:var(--line);}
+
+  .rule{
+    border:0;
+    border-top:1px solid var(--line);
+    margin:52px 0 34px;
+  }
+  .rule.first{margin-top:0;}
+
+  h2.section-title{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:15px;
+    letter-spacing:0.03em;
+    color:var(--brass);
+    margin:0 0 26px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  h2.section-title::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .about p{color:var(--text);margin:0 0 14px;max-width:62ch;}
+  .about p:last-child{margin-bottom:0;}
+
+  /* Selected work */
+  .work-item{margin-bottom:40px;}
+  .work-item:last-child{margin-bottom:0;}
+  .work-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:4px;
+  }
+  .work-title{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:21px;
+  }
+  .work-dates{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--text-dim);
+    white-space:nowrap;
+  }
+  .work-role{
+    font-size:14px;
+    color:var(--text-dim);
+    margin-bottom:12px;
+  }
+  .work-desc{margin:0 0 14px;max-width:64ch;color:var(--text);}
+  .work-stats{
+    display:flex;
+    flex-wrap:wrap;
+    margin:14px 0;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .stat{
+    margin-right:32px;
+    margin-bottom:4px;
+  }
+  .stat:last-child{margin-right:0;}
+  .stat-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:19px;
+    color:var(--brass);
+    display:block;
+  }
+  .stat-label{
+    font-size:12px;
+    color:var(--text-dim);
+    display:block;
+  }
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    border:1px solid var(--line);
+    padding:3px 9px;
+    border-radius:3px;
+  }
+
+  /* Experience list */
+  .exp-item{
+    padding:18px 0;
+    border-top:1px solid var(--line);
+  }
+  .exp-item:last-child{border-bottom:1px solid var(--line);}
+  .exp-item-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .exp-role{font-weight:600;font-size:16px;}
+  .exp-company{color:var(--text-dim);font-size:14.5px;width:100%;}
+  .exp-dates{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--text-dim);
+    white-space:nowrap;
+  }
+  .exp-bullets{
+    margin:10px 0 0;
+    padding-left:18px;
+    color:var(--text);
+  }
+  .exp-bullets li{margin-bottom:6px;font-size:14.5px;line-height:1.55;}
+  .exp-bullets li:last-child{margin-bottom:0;}
+  details.exp-toggle summary{
+    cursor:pointer;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--brass);
+    list-style:none;
+    margin-top:10px;
+    width:fit-content;
+  }
+  details.exp-toggle summary::-webkit-details-marker{display:none;}
+  details.exp-toggle summary::before{content:'+ details';}
+  details.exp-toggle[open] summary::before{content:'– details';}
+
+  /* Skills */
+  .skill-groups{display:grid;gap:18px;}
+  .skill-group-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--text-dim);
+    margin-bottom:6px;
+  }
+  .skill-list{font-size:15px;color:var(--text);}
+
+  /* Education / Awards */
+  .fact-row{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .fact-row:last-child{border-bottom:1px solid var(--line);}
+  .fact-main{font-weight:600;font-size:15.5px;}
+  .fact-sub{color:var(--text-dim);font-size:13.5px;margin-top:2px;}
+  .fact-date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--text-dim);
+    white-space:nowrap;
+  }
+
+  footer{
+    margin-top:70px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--text-dim);
+  }
+  footer a{color:var(--text-dim);}
+  footer a:hover{color:var(--brass);}
+
+  @media (max-width:560px){
+    .wrap{padding:56px 20px 90px;}
+    .exp-dates{text-align:left;grid-column:1;grid-row:2;}
+    .exp-role{grid-column:1;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1 class="name">Jeremiah Noah</h1>
+    <p class="role">Solidity &amp; Full-Stack Software Engineer</p>
+    <div class="meta">
+      <span>Lagos, Nigeria</span>
+      <span class="sep">·</span>
+      <a href="mailto:jeremiahnoah0724@gmail.com">jeremiahnoah0724@gmail.com</a>
+      <span class="sep">·</span>
+      <a href="https://linkedin.com/in/jeremiahnoah123">linkedin.com/in/jeremiahnoah123</a>
+      <span class="sep">·</span>
+      <a href="https://github.com/jerrynoah96">github.com/jerrynoah96</a>
+    </div>
+  </header>
+
+  <hr class="rule first">
+
+  <section class="about">
+    <h2 class="section-title">About</h2>
+    <p>I'm a Solidity and full-stack software engineer with 5+ years of production experience across DeFi, payments, and blockchain infrastructure. I've spent my career building the parts of financial systems that can't afford to be wrong: orderbook infrastructure for a central bank, on-chain forensic analysis after a security incident, and payment rails moving real money for real businesses.</p>
+    <p>Most recently I've been a founding engineer twice over, building RampHub and Paychain from scratch, owning everything from smart contract logic and backend architecture to the React interfaces on top and the CI/CD and observability tooling underneath.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2 class="section-title">Selected work</h2>
+
+    <div class="work-item">
+      <div class="work-head">
+        <span class="work-title">RampHub</span>
+        <span class="work-dates">2025 — Present</span>
+      </div>
+      <div class="work-role">Founding Software Engineer</div>
+      <p class="work-desc">A crypto on/off-ramp aggregator, born out of the same aggregation logic that powers DEX aggregators, applied instead to fiat rails. Built from scratch: backend architecture, DEX aggregator integrations (1inch, Jupiter), multi-chain wallet infrastructure, and the site reliability tooling running underneath it.</p>
+      <div class="work-stats">
+        <div class="stat">
+          <span class="stat-num">$200K+</span>
+          <span class="stat-label">volume processed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">150+</span>
+          <span class="stat-label">customers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">7</span>
+          <span class="stat-label">businesses served via API</span>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">PostgreSQL</span>
+        <span class="tag">Redis</span><span class="tag">1inch</span><span class="tag">Jupiter</span>
+        <span class="tag">Grafana</span><span class="tag">AWS</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-head">
+        <span class="work-title">Paychain</span>
+        <span class="work-dates">2025 — 2026</span>
+      </div>
+      <div class="work-role">Founding Software Engineer</div>
+      <p class="work-desc">Wallet infrastructure enabling businesses to receive crypto payments. Built the payment and treasury logic end to end: reconciliation, withdrawal workflows, admin tooling, and secure account access via MFA and passkey/WebAuthn flows.</p>
+      <div class="tags">
+        <span class="tag">REST APIs</span><span class="tag">PostgreSQL</span><span class="tag">MFA</span>
+        <span class="tag">WebAuthn</span><span class="tag">AWS Secrets Manager</span>
+      </div>
+    </div>
+
+    <div class="work-item">
+      <div class="work-head">
+        <span class="work-title">Nahmii AS</span>
+        <span class="work-dates">2021 — 2026</span>
+      </div>
+      <div class="work-role">Solidity and Full-Stack Software Engineer · Ethereum Layer 2</div>
+      <p class="work-desc">Four years writing production Solidity and building the full-stack systems around it. Contributed to orderbook infrastructure for a central bank digital asset initiative, worked on a modified Uniswap V2 AMM, and led the on-chain forensic analysis behind a 2024 token reimbursement, reconstructing exact user holdings from raw on-chain state after a security incident.</p>
+      <div class="tags">
+        <span class="tag">Solidity</span><span class="tag">React</span><span class="tag">Next.js</span>
+        <span class="tag">Node.js</span><span class="tag">PostgreSQL</span><span class="tag">Chainlink VRF</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2 class="section-title">Experience</h2>
+
+    <div class="exp-item">
+      <div class="exp-item-head">
+        <div class="exp-role">Solidity and Full-Stack Software Engineer</div>
+        <div class="exp-dates">Oct 2021 – Jun 2026</div>
+      </div>
+      <div class="exp-company">Nahmii AS — Oslo, Norway</div>
+      <details class="exp-toggle">
+        <summary></summary>
+        <ul class="exp-bullets">
+          <li>Developed and deployed production Solidity smart contracts powering core blockchain infrastructure, including testing and integration with production systems.</li>
+          <li>Contributed to orderbook infrastructure for a central bank digital asset initiative, handling on-chain trade matching and processing at the intersection of traditional financial infrastructure and blockchain rails.</li>
+          <li>Contributed to SLP Hub, an AMM with a game hub built on top, developing smart contract game logic and implementing provably fair mechanics using Chainlink VRF.</li>
+          <li>Designed, built, and maintained production full-stack applications using React, Next.js, TypeScript, Node.js, and PostgreSQL.</li>
+          <li>Built the frontend layer connecting directly to Solidity smart contracts, wiring wallet flows and on-chain state into production financial UI.</li>
+          <li>Led the on-chain forensic analysis behind a 2024 token reimbursement, reconstructing exact user holdings from raw on-chain state after a security incident.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-item-head">
+        <div class="exp-role">Founding Software Engineer</div>
+        <div class="exp-dates">Jun 2025 – Present</div>
+      </div>
+      <div class="exp-company">RampHub — Lagos, Nigeria</div>
+      <details class="exp-toggle">
+        <summary></summary>
+        <ul class="exp-bullets">
+          <li>Built a crypto on/off-ramp aggregator from scratch, connecting users to multiple payment providers, now processing over $200K in volume across 150 customers and 7 businesses.</li>
+          <li>Built multi-chain wallet infrastructure supporting Ethereum, Base, BSC, and Solana, including transaction signing workflows and blockchain transaction monitoring.</li>
+          <li>Designed and integrated REST APIs supporting payment providers, KYC verification, quote aggregation, and transaction processing, using client idempotency keys to guarantee exactly-once processing.</li>
+          <li>Built and owned the authentication and authorization backend, including JWT session/token lifecycle, OAuth2 flows, and role-based access scopes across a multi-tenant system.</li>
+          <li>Built webhook processing pipelines for real-time provider and blockchain event handling.</li>
+          <li>Built responsive React and Next.js interfaces for quote comparison, payment flows, KYC, and transaction tracking.</li>
+          <li>Handled site reliability work, including building and maintaining CI/CD pipelines and setting up Grafana for monitoring and observability across the platform.</li>
+          <li>Implemented Redis caching strategies to improve API response times and overall platform performance.</li>
+          <li>Collaborated on microservice-based architecture supporting scalable financial services.</li>
+          <li>Used AWS Secrets Manager to securely store and manage API credentials and sensitive configuration across environments.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-item-head">
+        <div class="exp-role">Founding Software Engineer</div>
+        <div class="exp-dates">Aug 2025 – May 2026</div>
+      </div>
+      <div class="exp-company">Paychain — Lagos, Nigeria</div>
+      <details class="exp-toggle">
+        <summary></summary>
+        <ul class="exp-bullets">
+          <li>Built payment and wallet infrastructure enabling businesses to receive crypto payments.</li>
+          <li>Developed payment dashboards and wallet management applications for blockchain payment infrastructure.</li>
+          <li>Designed and integrated REST APIs supporting business payments, wallets, and transaction management, with idempotent handling to prevent duplicate processing on retries.</li>
+          <li>Built treasury and withdrawal workflows, transaction reconciliation, and admin dashboards for operational tooling.</li>
+          <li>Extended authentication and authorization patterns, including MFA and passkey/WebAuthn-based flows, for secure account access.</li>
+          <li>Worked with PostgreSQL-backed services and financial transaction data.</li>
+          <li>Used AWS Secrets Manager to securely store and manage sensitive credentials and financial system configuration.</li>
+          <li>Performed quality assurance on payment workflows and investigated production transaction discrepancies.</li>
+          <li>Collaborated with cross-functional engineering teams to deliver reliable payment solutions.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-item-head">
+        <div class="exp-role">Full-Stack Engineer</div>
+        <div class="exp-dates">Aug 2024 – May 2025</div>
+      </div>
+      <div class="exp-company">WillMaestro — Lagos, Nigeria</div>
+      <details class="exp-toggle">
+        <summary></summary>
+        <ul class="exp-bullets">
+          <li>Built scalable websites and web applications for businesses across real estate, fashion, and professional services.</li>
+          <li>Designed responsive user interfaces using React, Next.js, HTML5, CSS3, and Tailwind CSS.</li>
+          <li>Integrated backend REST APIs into production applications.</li>
+          <li>Optimized application performance, accessibility, SEO, and cross-browser compatibility.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-item-head">
+        <div class="exp-role">Solidity and Backend Engineer</div>
+        <div class="exp-dates">Sep 2021 – Feb 2022</div>
+      </div>
+      <div class="exp-company">Coinvise — Bengaluru, India</div>
+      <details class="exp-toggle">
+        <summary></summary>
+        <ul class="exp-bullets">
+          <li>Developed and tested smart contracts supporting Coinvise's creator token and NFT products, using established testing frameworks to verify functionality before deployment.</li>
+          <li>Built and maintained a Discord bot to support on-chain community management for creators using the platform.</li>
+          <li>Participated in code reviews across the smart contract and bot codebases to maintain code quality.</li>
+          <li>Collaborated with backend engineers on API integrations connecting on-chain contract state to the frontend.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-item-head">
+        <div class="exp-role">Frontend Engineer &amp; Mentor</div>
+        <div class="exp-dates">Jan 2021 – Sep 2021</div>
+      </div>
+      <div class="exp-company">Web3Bridge — Lagos, Nigeria</div>
+      <details class="exp-toggle">
+        <summary></summary>
+        <ul class="exp-bullets">
+          <li>Built React-based educational platforms demonstrating blockchain development concepts.</li>
+          <li>Mentored developers on React, TypeScript, frontend architecture, and software engineering best practices.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2 class="section-title">Skills</h2>
+    <div class="skill-groups">
+      <div>
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-list">TypeScript, JavaScript, Python, Solidity, Rust, Go, HTML5, CSS3</div>
+      </div>
+      <div>
+        <div class="skill-group-label">Backend &amp; data</div>
+        <div class="skill-list">Node.js, Express.js, REST APIs, GraphQL, gRPC, SQS, PostgreSQL, Supabase, Redis, Microservices</div>
+      </div>
+      <div>
+        <div class="skill-group-label">Frontend</div>
+        <div class="skill-list">React.js, Next.js, Redux, Zustand, Tailwind CSS, SSR/ISR</div>
+      </div>
+      <div>
+        <div class="skill-group-label">Blockchain</div>
+        <div class="skill-list">Solidity, ethers.js, viem, Web3.js, Hardhat, Foundry, Wallet integration</div>
+      </div>
+      <div>
+        <div class="skill-group-label">Cloud &amp; infra</div>
+        <div class="skill-list">AWS, AWS Secrets Manager, Google Cloud, Cloud Run, Docker, CI/CD, Git, Linux</div>
+      </div>
+      <div>
+        <div class="skill-group-label">Testing &amp; QA</div>
+        <div class="skill-list">Jest, PyTest, Cypress, Data validation</div>
+      </div>
+      <div>
+        <div class="skill-group-label">AI-native engineering</div>
+        <div class="skill-list">Cursor, GitHub Copilot, OpenAI Codex, Claude, Anthropic API, OpenAI API, MCP, Prompt engineering</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section>
+    <h2 class="section-title">Education &amp; awards</h2>
+    <div class="fact-row">
+      <div>
+        <div class="fact-main">BSc, Industrial Chemistry</div>
+        <div class="fact-sub">University of Ilorin, Nigeria</div>
+      </div>
+      <div class="fact-date">2015 – 2019</div>
+    </div>
+    <div class="fact-row">
+      <div>
+        <div class="fact-main">2nd Place — Encode HackAfrica</div>
+      </div>
+      <div class="fact-date">2021</div>
+    </div>
+    <div class="fact-row">
+      <div>
+        <div class="fact-main">3rd Place — Colosseum Raenest Side Track</div>
+      </div>
+      <div class="fact-date">2026</div>
+    </div>
+  </section>
+
+  <footer>
+    Jeremiah Noah — <a href="mailto:jeremiahnoah0724@gmail.com">jeremiahnoah0724@gmail.com</a> — <a href="https://github.com/jerrynoah96">github.com/jerrynoah96</a>
+  </footer>
+
+</div>
+</body>
+</html>
